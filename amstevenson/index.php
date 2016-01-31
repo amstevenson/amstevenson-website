@@ -8,9 +8,9 @@
 
             // Get each project
             $result = array();
-            $result = $projects->get_tutorials();
+            $result = $projects->get_projects();
 
-            //echo($result[0]['project_name']);
+            $projects->array_shuffle($result);
             ?>
 
             <!-- Banner -->
@@ -79,13 +79,14 @@
                             for($i = 0; $i < 4; $i++)
                             {
                                 // Print out first four projects as a sort of template.
-                                // TODO: randomise in the future
+                                $linkUrl = "/project.php?name=".strtolower($result[$i]["project_name"]);
+
                                 echo '<article>';
-                                echo '    <a href="#" class="image"><img src="'.$result[$i]["project_image"].'" alt="" /></a>';
+                                echo '    <a href="#" class="image"><img src="'.$result[$i]["project_main_image"].'" alt="" /></a>';
                                 echo '    <h3 class="major">'.$result[$i]["project_name"].'</h3>';
-                                echo '    <p>'.$result[$i]["project_status"].'</p>';
+                                echo '    <p>Status: '.$result[$i]["project_status"].'</p>';
                                 echo '    <p>'.$result[$i]["project_description"].'</p>';
-                                echo '    <a href="#" class="special">Learn more</a>';
+                                echo '    <a href= "'.$linkUrl.'" class="special">Learn more</a>';
                                 echo '</article>';
                             }
 
@@ -94,7 +95,7 @@
                         </section>
 
                         <ul class="actions">
-                            <li><a href="projects.php" class="button">Browse All</a></li>
+                            <li><a href="projectgallery.php" class="button">Browse All</a></li>
                         </ul>
                     </div>
                 </section>

@@ -8,10 +8,10 @@
 
     // Get each project
     $result = array();
-    $result = $projects->get_tutorials();
+    $result = $projects->get_projects();
 
     // Randomise the array...for funky funky times
-    // $projects->array_shuffle($result);
+    $projects->array_shuffle($result);
     ?>
 
     <!-- Wrapper -->
@@ -35,11 +35,11 @@
 
 
                 <section>
-                    <form method="post" action="#" >
-                        <div class="row uniform" style="display: flex; justify-content: center; align-items: center;">
-                            <div class="6u 12u$(xsmall)">
-                                <label for="demo-name" class="center">Name</label>
-                                <input type="text" name="demo-name" id="demo-name" value="" />
+                    <form id="project-form" method="post" action="#" >
+                        <div class="row uniform">
+                            <div class="6u 12u$(xsmall)" style="z-index: 1;">
+                                <label for="search-name" class="center">Name</label>
+                                <input type="text" name="search-name" id="search-name" value=""/>
                             </div>
                             <div class="12u$">
                                 <label for="demo-category" class="center">Status</label>
@@ -83,9 +83,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="12u$">
+                            <div class="12u$"  style="z-index: 1;">
                                 <ul class="actions">
-                                    <li><input type="submit" value="Search" class="special" style="margin-top: 25px" /></li>
+                                    <li><input type="submit" value="Search" class="special" style="margin-top: 2em"/></li>
                                 </ul>
                             </div>
                         </div>
@@ -94,22 +94,22 @@
 
                 <section class="wrapper alt style1">
 
-                    <div class="inner alt1" style="margin-top: 100px">
+                    <div class="inner alt1" >
 
                         <section class="projects" id = "projects" >
 
                         <?php
 
-                        for($i = 0; $i < 4; $i++)
+                        for($i = 0; $i < count($result); $i++)
                         {
-                            // Print out first four projects as a sort of template.
-                            // TODO: randomise in the future
+                            $linkUrl = "/project.php?name=".strtolower($result[$i]["project_name"]);
+
                             echo '<article>';
-                            echo '    <a href="#" class="image"><img src="'.$result[$i]["project_image"].'" alt="" /></a>';
+                            echo '    <a href="#" class="image"><img src="'.$result[$i]["project_main_image"].'" alt="" /></a>';
                             echo '    <h3 class="major">'.$result[$i]["project_name"].'</h3>';
-                            echo '    <p>'.$result[$i]["project_status"].'</p>';
+                            echo '    <p>Status: '.$result[$i]["project_status"].'</p>';
                             echo '    <p>'.$result[$i]["project_description"].'</p>';
-                            echo '    <a href="#" class="special">Learn more</a>';
+                            echo '    <a href= "'.$linkUrl.'" class="special">Learn more</a>';
                             echo '</article>';
                         }
 

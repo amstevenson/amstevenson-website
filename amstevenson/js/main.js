@@ -163,8 +163,7 @@
 
                 var check = $(this).attr('id');
 
-                if(check == 'blog'){ }
-                else {
+                if(check == 'aboutme' || check == 'services') {
                     event.preventDefault();
 
                     var target = "#" + this.getAttribute('data-target');

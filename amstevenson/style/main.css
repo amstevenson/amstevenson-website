@@ -70,6 +70,7 @@
 
 	.row.uniform > * > :first-child {
 		margin-top: 0;
+
 	}
 
 	.row.uniform > * > :last-child {
@@ -106,6 +107,10 @@
 
 	.row.uniform {
 		margin: -1.75em 0 -1px -1.75em;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
 	}
 
 	.row.\3200\25 > * {
@@ -129,6 +134,8 @@
 
 		.row.uniform {
 			margin: -1.75em 0 -1px -1.75em;
+
+            justify-content: center;
 		}
 
 
@@ -598,13 +605,14 @@
 		input[type="tel"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #5b6ba6;
+			border-color: #4D71A3;
 		}
 
 	.select-wrapper {
 		text-decoration: none;
 		display: block;
 		position: relative;
+        z-index: 1;
 	}
 
 		.select-wrapper:before {
@@ -1189,7 +1197,7 @@
 		input[type="button"].special,
 		button.special,
 		.button.special {
-			background-color: #4c5c96;
+			background-color: #4D71A3;
 			box-shadow: none;
 		}
 
@@ -1198,7 +1206,8 @@
 			input[type="button"].special:hover,
 			button.special:hover,
 			.button.special:hover {
-				background-color: #53639e;
+				background-color: #456592;
+
 			}
 
 			input[type="submit"].special:active,
@@ -1303,7 +1312,7 @@
 
 				.projects article .image img {
 					border-radius: 5px 5px 0 0;
-					width: 100%;
+                    width: 100%;
 				}
 
 		@media screen and (max-width: 980px) {
