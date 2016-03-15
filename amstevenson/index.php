@@ -1,9 +1,25 @@
-            <?php include_once("includes/header.php"); ?>
-
-            <!-- create the panel to store projects, then populate... -->
             <?php
             include 'classes/config.inc.php';
-            include 'classes/projects/projects.php';
+            include 'classes/class/projects.php';
+
+            // Check to see if we need to log a user out
+            if (isset($_GET['logout'])) {
+                if($_GET['logout'])
+                {
+                    $user->logout();
+                    header('Location: index.php');
+                }
+            }
+
+            $loggedIn = $user->is_logged_in();
+
+            $pageTitle = "AMStevenson Software Engineer | Home Page";
+
+            // Set meta description for the page
+            $metaDescription = "Software developer with over 3 years experience. Free interview to discuss customer needs. I can help with all your website, mobile and desktop development requirements.";
+
+            include_once("includes/header.php");
+
             $projects   = new Projects($db);
 
             // Get each project
@@ -12,6 +28,8 @@
 
             $projects->array_shuffle($result);
             ?>
+
+            <?php include_once("includes/header.php"); ?>
 
             <!-- Banner -->
             <section id="banner">
@@ -30,10 +48,9 @@
                     <div class="inner">
                         <a href="#" class="image"><img src="images/profilepicture.jpg" alt="" /></a>
                         <div class="content">
-                            <h2 class="major">Who am I?</h2>
-                            <p>I am a software developer with more than three years experience under my belt. I have designed android apps, created websites for clients, and have various interesting projects
-                            that have been developed in a variety of languages. Feel free to check out some of them below!</p>
-                            <a id = 'aboutme' href="#" class="special" data-target = "four">Learn more</a>
+                            <h2 class="major">Portfolio</h2>
+                            <p>I am a software developer with more than three years experience under my belt. I have a degree in computer-science, with a specific focus towards artificial intelligence, database design and implementation, creation of games using DirectX/OpenGL (not game engines) and software engineering. I have designed various android apps, websites, and have implemented desktop applications (in a variety of languages) for both clients, research and self-learning. Feel free to check out some of them below!</p>
+                            <a id = 'aboutme' href="#" class="special" data-target = "four">View Projects</a>
                         </div>
                     </div>
                 </section>
@@ -48,6 +65,7 @@
                                 I always strive to add elements of uniqueness and innovation to the projects I work on. By messaging your details below, we can begin to
                             discuss creative ideas for the design and implementation of the vision you have in your mind for the specific service you are aiming to provide. This I do,
                             free of charge, so why not get in touch? You have nothing to lose.</p>
+
                             <a id = 'services' href="#" class="special" data-target = "footer">Get In Touch</a>
                         </div>
                     </div>
@@ -61,10 +79,12 @@
                             <h2 class="major">My blog</h2>
                             <p>If you want to have a look at some of my blogs, that are most likely related to all types of random projects that I have been working on, video games, or a mixture, feel free too!
                             If you want to leave a comment on the articles that are of interest to you, it would be most appreciated! </p>
-                            <a id = "blog" href="articles.php" class="special" >Learn more</a>
+                            <a id = "blog" href="blogs.php" class="special" >Learn more</a>
                         </div>
                     </div>
                 </section>
+
+
 
                 <!-- Four -->
                 <section id="four" class="wrapper alt style1">
@@ -78,7 +98,7 @@
 
                             for($i = 0; $i < 4; $i++)
                             {
-                                // Print out first four projects as a sort of template.
+                                // Print out first four class as a sort of template.
                                 $linkUrl = "/project.php?name=".strtolower($result[$i]["project_name"]);
 
                                 echo '<article>';
@@ -97,9 +117,10 @@
                         <ul class="actions">
                             <li><a href="projectgallery.php" class="button">Browse All</a></li>
                         </ul>
-                    </div>
-                </section>
 
+
+                        </div>
+                </section>
             </section>
 
             <!-- Footer -->

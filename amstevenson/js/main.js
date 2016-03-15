@@ -160,10 +160,12 @@
         // Shortcuts to elements on pages
             $(document).on('click','.special', function(event) {
 
-
                 var check = $(this).attr('id');
 
-                if(check == 'aboutme' || check == 'services') {
+                // Elements on page that result in a short animation.
+                if(check == 'aboutme' || check == 'services' || check == 'documentationLink'
+                || check == 'cmdsLink' || check == 'addComLink' || check == 'delComLink' || check == 'editComLink' || check == 'editComRepeatLink' || check == 'startTriviaLink' || check == 'stopTriviaLink' || check == 'setQuestionPoolLink' || check == 'currencyLink' || check == 'giveCurrencyLink' || check == 'miscLink') {
+
                     event.preventDefault();
 
                     var target = "#" + this.getAttribute('data-target');
@@ -183,8 +185,8 @@
     }
 
     // get all data in form and return object
-    function getFormData() {
-        var elements = document.getElementById("contact-form").elements; // all form elements
+    function getFormData(formName) {
+        var elements = document.getElementById(formName).elements; // all form elements
         var fields = Object.keys(elements).filter(function(k){
             return k.length > 1 && elements[k].name && elements[k].name.length > 0 ;
         });
@@ -198,7 +200,7 @@
 
     function handleFormSubmitMessage(event) {  // handles form submit withtout any jquery
         event.preventDefault();           // we are submitting via xhr below
-        var data = getFormData();         // get the values submitted in the form
+        var data = getFormData("contact-form");         // get the values submitted in the form
         if( !validEmail(data.email) ) {   // if email is not valid show error
             document.getElementById('email-invalid').style.display = 'block';
             return false;
@@ -227,6 +229,10 @@
 
     function handleFormSubmitProjectSearch(event)
     {
+        // POSSIBLE DELETE IN THE FUTURE
+        //event.preventDefault();
+        //var data = getFormData("project-form");
+
 
     }
 

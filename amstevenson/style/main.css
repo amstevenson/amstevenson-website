@@ -1551,7 +1551,7 @@
 			-moz-transition: opacity 0.35s ease, -moz-transform 0.35s ease;
 			-webkit-transition: opacity 0.35s ease, -webkit-transform 0.35s ease;
 			transition: opacity 0.35s ease, transform 0.35s ease;
-			background: #4c5c96;
+			background: #4D71A3;
 			border-radius: 5px;
 			display: block;
 			max-width: 100%;
@@ -1607,7 +1607,7 @@
 				}
 
 					#menu .links li a:hover {
-						background: #45558d;
+						background: #456592;
 					}
 
 		@media screen and (max-width: 736px) {
@@ -2114,6 +2114,20 @@
 			}
 
 		}
+
+/* Blogs */
+
+    section .blog-projects:nth-child(2n) {
+
+        margin-top: -1em;
+        margin-bottom: -10em;
+    }
+
+    section .blog-projects:nth-child(2n + 1) {
+
+        margin-bottom: -10em;
+    }
+
 
 /* Footer */
 
